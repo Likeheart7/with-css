@@ -1,43 +1,46 @@
-* {
+*,
+*::after,
+*::before {
   /* 清除默认值 */
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* 意味着width、height将会包括padding和border在内*/
+  box-sizing: inherit;  /*通过继承的方式，防止第三方组件的该属性被替换*/
 }
 body {
-  /* 下面这些元素会被子元素默认继承 */
-  font-family: "Lato" sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: #777;
-  padding: 30px;
+    /* 下面这些元素会被子元素默认继承 */
+    font-family: "Lato" sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+    box-sizing: border-box; /* 意味着width、height将会包括padding和border在内*/
 }
 
 .header {
-  height: 95vh; /*视口的95%*/
-  /* 背景图片与其上的线性渐变效果 */
-  background-image: linear-gradient(to right bottom, #7ed56fba, #28b485ba),
-    url("../img/hero.jpg");
-  background-size: cover;
-  background-position: top; /*视口变化时恒定的锚点*/
-  position: relative; /*用于子元素定位*/
-  /* 切割元素 */
-  /* clip-path: polygon(0 0, 0 0, 100% 50%, 0 100%);  */
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    height: 95vh; /*视口的95%*/
+    /* 背景图片与其上的线性渐变效果 */
+    background-image: linear-gradient(to right bottom, #7ed56fba, #28b485ba),
+      url("../img/hero.jpg");
+    background-size: cover;
+    background-position: top; /*视口变化时恒定的锚点*/
+    position: relative; /*用于子元素定位*/
+    /* 切割元素 */
+    /* clip-path: polygon(0 0, 0 0, 100% 50%, 0 100%);  */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   top: 40px;
   left: 40px;
 }
 
-.logo {
+.header__logo {
   height: 35px;
 }
 
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -50,7 +53,7 @@ body {
   text-transform: uppercase;
   margin-bottom: 60px;
 }
-.header-primary-main {
+.header-primary--main {
   letter-spacing: 35px;
   font-weight: 400;
   font-size: 60px;
@@ -61,7 +64,7 @@ body {
   animation-duration: 1s;
   animation-timing-function: ease-out;
 }
-.header-primary-sub {
+.header-primary--sub {
   letter-spacing: 17.5px;
   font-size: 20px;
   display: block;
@@ -125,7 +128,7 @@ body {
     box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
@@ -146,7 +149,7 @@ body {
     /* transition放在初始状态里 */
     transition: all .4s;
 }
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 .btn:hover::after {
@@ -154,7 +157,7 @@ body {
     opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
     animation: btnInBottom .5s ease-in .75s;
     /* 配合delay使用，让元素在动画开始之前，就使用0%定义的样式 */
     animation-fill-mode: backwards;
